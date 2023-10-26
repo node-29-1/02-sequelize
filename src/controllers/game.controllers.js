@@ -6,6 +6,16 @@ const getAll = catchError(async(req, res) => {
     return res.json(games);
 });
 
+const create = catchError(async(req, res) => {
+    const { name, price } = req.body;
+    const game = await Game.create({
+        name: name,
+        price: price,
+    });
+    return res.status(201).json(game);
+});
+
 module.exports = {
-    getAll
+    getAll,
+    create,
 }

@@ -6,6 +6,17 @@ const getAll = catchError(async(req, res) => {
     return res.json(cars);
 });
 
+const create = catchError(async(req, res) => {
+    const car = await Car.create({
+        brand: "Tesla",
+        model: "X",
+        year: 2022,
+        color: "red",
+    });
+    return res.status(201).json(car);
+});
+
 module.exports = {
-    getAll
+    getAll,
+    create,
 }
